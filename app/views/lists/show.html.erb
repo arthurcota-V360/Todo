@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @list %>
+<h1>Tarefas da lista <%= @list.title%>
+
+<div>
+  <%= link_to "Edit this list", edit_list_path(@list) %> |
+  <%= link_to "Back to lists", lists_path %>
+
+  <%= button_to "Destroy this list", @list, method: :delete %>
+</div>

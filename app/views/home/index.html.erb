@@ -1,0 +1,7 @@
+<h2>Welcome to Todo - Lists</h2>
+<%if user_signed_in?%>
+<%= link_to "Your Lists", lists_path, class: "btn btn-primary"%>
+<%= link_to "Create a new list", new_list_path, class: "btn btn-primary"%>
+<%else%>
+<h3>Sign-in or Sign-up to proceed</h3>
+<%end%>
