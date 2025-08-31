@@ -1,10 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @list %>
-<h1>Tarefas da lista <%= @list.title%>
+<h1>Tasks from list: <%= @list.title%></h1>
+
+<% if @tasks.any? %>
+  <ul>
+    <%# Faz um loop SOMENTE nas tarefas daquela lista específica %>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= task.description %>
+        <%# Exemplo de como mostrar o status %>
+        <%= task.completed %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This list has no tasks.</p>
+<% end %>
 
 <div>
-  <%= link_to "Edit this list", edit_list_path(@list) %> |
+  <%= link_to "Add Task to List", new_list_task_path(@list) %> 
+  <%= link_to "Edit this list", edit_list_path(@list) %> 
   <%= link_to "Back to lists", lists_path %>
 
   <%= button_to "Destroy this list", @list, method: :delete %>

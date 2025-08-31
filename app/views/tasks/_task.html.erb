@@ -1,7 +1,17 @@
 <div id="<%= dom_id task %>">
-  <tr>
-    <th scope="row"><%= task.id %></th>
-    <td><%= task.title %></td>
-    <td><%= task.description %></td>
-    <td><%= task.completed %></td>
-  
+  <p>
+    <strong>Description:</strong>
+    <%= task.description %>
+  </p>
+
+  <p>
+    <strong>Completed:</strong>
+    <%= task.completed %>
+  </p>
+
+  <p>
+    <strong>List:</strong>
+    <%= task.list_id %>
+  </p>
+
+</div>

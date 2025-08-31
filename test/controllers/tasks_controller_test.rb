@@ -17,7 +17,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create task" do
     assert_difference("Task.count") do
-      post tasks_url, params: { task: { completed: @task.completed, description: @task.description, title: @task.title } }
+      post tasks_url, params: { task: { completed: @task.completed, description: @task.description, list_id: @task.list_id } }
     end
 
     assert_redirected_to task_url(Task.last)
@@ -34,7 +34,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update task" do
-    patch task_url(@task), params: { task: { completed: @task.completed, description: @task.description, title: @task.title } }
+    patch task_url(@task), params: { task: { completed: @task.completed, description: @task.description, list_id: @task.list_id } }
     assert_redirected_to task_url(@task)
   end
 
