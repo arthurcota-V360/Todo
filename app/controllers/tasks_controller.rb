@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  before_action :set_list, only: %i[ new create ]
+  before_action :set_list, only: %i[ show new create destroy edit update ]
 
   # GET /tasks or /tasks.json
   def index
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     @task.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tasks_path, notice: "Task was successfully destroyed.", status: :see_other }
+      format.html { redirect_to @list, notice: "Task was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
   end

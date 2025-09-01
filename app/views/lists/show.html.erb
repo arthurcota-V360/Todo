@@ -1,26 +1,34 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Tasks from list: <%= @list.title%></h1>
 
 <% if @tasks.any? %>
-  <ul>
-    <%# Faz um loop SOMENTE nas tarefas daquela lista específica %>
-    <% @tasks.each do |task| %>
-      <li>
-        <%= task.description %>
-        <%# Exemplo de como mostrar o status %>
-        <%= task.completed %>
-      </li>
-    <% end %>
-  </ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Descrição</th>
+        <th scope="col">Concluída?</th>
+        <th scope="col">Ações</th>
+        <th scope="col">Remover</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.description %>
+          <td><%= task.completed %>
+          <td><%= link_to "Show", list_task_path(@list, task), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_list_task_path(@list, task), class: "btn btn-primary" %>
+          <td><%= button_to "Destroy", list_task_path(@list, task), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p>This list has no tasks.</p>
 <% end %>
 
 <div>
-  <%= link_to "Add Task to List", new_list_task_path(@list) %> 
-  <%= link_to "Edit this list", edit_list_path(@list) %> 
-  <%= link_to "Back to lists", lists_path %>
-
-  <%= button_to "Destroy this list", @list, method: :delete %>
+  <%= link_to "Add Task to List", new_list_task_path(@list), class: "btn btn-success" %> 
+  <%= link_to "Rename", edit_list_path(@list), class: "btn btn-primary" %> 
+  <%= link_to "Back to lists", lists_path, class: "btn btn-warning" %>
+  <%= button_to "Destroy this list", @list, method: :delete, class: "btn btn-danger" %>
 </div>
