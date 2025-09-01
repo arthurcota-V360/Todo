@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_list, only: %i[ show new create destroy edit update ]
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /tasks or /tasks.json
   def index
@@ -53,6 +54,11 @@ class TasksController < ApplicationController
       format.html { redirect_to @list, notice: "Task was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @list = current_user.lists.find_by(id: params[:id])
+    redirect_to lists_path, alert: "Boa tentativa" if @list.nil?
   end
 
   private
