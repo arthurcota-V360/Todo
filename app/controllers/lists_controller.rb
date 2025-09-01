@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /lists or /lists.json
   def index
@@ -65,7 +65,7 @@ class ListsController < ApplicationController
 
   def correct_user
     @list = current_user.lists.find_by(id: params[:id])
-    redirect_to lists_path, notice: "Not Authorized" if @list.nil?
+    redirect_to lists_path, alert: "Boa tentativa" if @list.nil?
   end
 
   private
