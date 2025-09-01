@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, style: "display: block", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div>
     <%= form.number_field :user_id, id: :list_user_id, value: current_user.id, type: :hidden %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -14,9 +14,8 @@
       <% @tasks.each do |task| %>
         <tr>
           <td><%= task.description %>
-          <td><%= task.completed %>
-          <td><%= link_to "Show", list_task_path(@list, task), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_list_task_path(@list, task), class: "btn btn-primary" %>
+          <td><%= check_box_tag "completed", task.id, task.completed, class: 'form-check-input', disabled: true %>
+          <td><%= link_to "Edit", edit_list_task_path(@list, task), class: "btn btn-primary" %>
           <td><%= button_to "Destroy", list_task_path(@list, task), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
         </tr>
       <% end %>
