@@ -4,7 +4,9 @@
 
 <div id="lists">
   <% @lists.each do |list| %>
-    <%= render list %>
+    <ul>
+      <%= render list %>
+    </ul>
     <p>
       <%= link_to "Show this list", list, class: "btn btn-dark"%>
     </p>
